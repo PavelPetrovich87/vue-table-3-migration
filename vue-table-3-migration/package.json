@@ -1,6 +1,6 @@
 {
   "name": "vue-table-3-migration",
-  "private": true,
+  "private": false,
   "version": "0.0.1",
   "type": "module",
   "main": "./dist/vue-table-3-migration.umd.js",
@@ -8,7 +8,7 @@
   "exports": {
     ".": {
       "import": "./dist/vue-table-3-migration.es.js",
-      "require": "./dist/vue-table-3-migration.es.js",
+      "require": "./dist/vue-table-3-migration.umd.js",
       "styles": "./dist/style.css"
     }
   },
