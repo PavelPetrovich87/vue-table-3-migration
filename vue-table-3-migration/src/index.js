@@ -15,6 +15,15 @@ import VuetableRowHeader from './components/VuetableRowHeader.vue'
 import VuetableColGutter from './components/VuetableColGutter.vue'
 
 export default {
+    Vuetable,
+    VuetablePagination,
+    VuetablePaginationDropDown,
+    VuetablePaginationInfo,
+    VuetableFieldCheckbox,
+    VuetableFieldHandle,
+    VuetableFieldSequence,
+    VuetableRowHeader,
+    VuetableColGutter,
     VuetableFieldMixin,
     VuetableFieldCheckboxMixin,
     VuetablePaginationMixin,

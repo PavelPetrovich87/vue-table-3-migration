@@ -1,14 +1,14 @@
 {
   "name": "vue-table-3-migration",
   "private": false,
-  "version": "0.0.1",
+  "version": "0.0.5",
   "type": "module",
-  "main": "./dist/vue-table-3-migration.umd.js",
-  "module": "./dist/vue-table-3-migration.es.js",
+  "main": "./dist/vue-table-3-migration.umd.cjs",
+  "module": "./dist/vue-table-3-migration.js",
   "exports": {
     ".": {
-      "import": "./dist/vue-table-3-migration.es.js",
-      "require": "./dist/vue-table-3-migration.umd.js",
+      "import": "./dist/vue-table-3-migration.js",
+      "require": "./dist/vue-table-3-migration.umd.cjs",
       "styles": "./dist/style.css"
     }
   },

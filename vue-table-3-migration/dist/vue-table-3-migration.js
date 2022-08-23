@@ -1,5 +1,5 @@
-import D from "axios";
-import { openBlock as i, createElementBlock as l, createElementVNode as g, normalizeStyle as m, resolveComponent as $, Fragment as b, renderList as p, createBlock as y, resolveDynamicComponent as C, normalizeClass as u, createCommentVNode as f, createVNode as F, renderSlot as w, withDirectives as L, vShow as B, toDisplayString as O } from "vue";
+import T from "axios";
+import { openBlock as i, createElementBlock as l, createElementVNode as f, normalizeStyle as p, resolveComponent as B, Fragment as b, renderList as m, createBlock as C, resolveDynamicComponent as y, normalizeClass as u, createCommentVNode as g, createVNode as R, renderSlot as w, withDirectives as N, vShow as q, toDisplayString as H } from "vue";
 const k = {
   props: {
     rowData: {
@@ -25,7 +25,7 @@ const k = {
       default: null
     }
   }
-}, E = {
+}, L = {
   mixins: [k],
   methods: {
     toggleCheckbox(e, t) {
@@ -49,37 +49,37 @@ const k = {
   for (const [r, d] of t)
     s[r] = d;
   return s;
-}, A = {
+}, z = {
   name: "vuetable-field-checkbox",
-  mixins: [E]
-}, x = {
+  mixins: [L]
+}, W = {
   key: 0,
   class: "vuetable-th-component-checkbox"
-}, N = ["checked"], q = {
+}, G = ["checked"], U = {
   key: 1,
   class: "vuetable-td-component-checkbox"
-}, z = ["checked"];
-function W(e, t, s, r, d, a) {
-  return e.isHeader ? (i(), l("th", x, [
-    g("input", {
+}, K = ["checked"];
+function Q(e, t, s, r, d, a) {
+  return e.isHeader ? (i(), l("th", W, [
+    f("input", {
       type: "checkbox",
       onChange: t[0] || (t[0] = (h) => e.toggleAllCheckbox(h)),
       checked: e.isAllItemsInCurrentPageSelected()
-    }, null, 40, N)
-  ])) : (i(), l("td", q, [
-    g("input", {
+    }, null, 40, G)
+  ])) : (i(), l("td", U, [
+    f("input", {
       type: "checkbox",
       onChange: t[1] || (t[1] = (h) => e.toggleCheckbox(e.rowData, h)),
       checked: e.isSelected(e.rowData)
-    }, null, 40, z)
+    }, null, 40, K)
   ]));
 }
-const V = /* @__PURE__ */ v(A, [["render", W]]), G = {
+const S = /* @__PURE__ */ v(z, [["render", Q]]), Y = {
   name: "vuetable-field-handle",
   mixins: [k],
   computed: {
     css() {
-      return this.vuetable.$_css;
+      return this.vuetable.customCss;
     }
   },
   methods: {
@@ -87,19 +87,19 @@ const V = /* @__PURE__ */ v(A, [["render", W]]), G = {
       return typeof this.css.renderIcon > "u" ? `<i class="${e.join(" ")}" ${t}></i>` : this.css.renderIcon(e, t);
     }
   }
-}, U = ["innerHTML"], K = ["innerHTML"];
-function Q(e, t, s, r, d, a) {
+}, Z = ["innerHTML"], J = ["innerHTML"];
+function X(e, t, s, r, d, a) {
   return e.isHeader ? (i(), l("th", {
     key: 0,
     class: "vuetable-th-component-handle",
     innerHTML: e.title
-  }, null, 8, U)) : (i(), l("td", {
+  }, null, 8, Z)) : (i(), l("td", {
     key: 1,
     class: "vuetable-td-component-handle",
     innerHTML: a.renderIconTag(["handle-icon", a.css.handleIcon])
-  }, null, 8, K));
+  }, null, 8, J));
 }
-const T = /* @__PURE__ */ v(G, [["render", Q]]), Y = {
+const D = /* @__PURE__ */ v(Y, [["render", X]]), ee = {
   name: "vuetable-field-sequence",
   mixins: [k],
   methods: {
@@ -107,20 +107,20 @@ const T = /* @__PURE__ */ v(G, [["render", Q]]), Y = {
       return this.vuetable.tablePagination ? this.vuetable.tablePagination.from + this.rowIndex : 1 + this.rowIndex;
     }
   }
-}, Z = ["innerHTML"], J = ["innerHTML"];
-function X(e, t, s, r, d, a) {
+}, te = ["innerHTML"], se = ["innerHTML"];
+function ae(e, t, s, r, d, a) {
   return e.isHeader ? (i(), l("th", {
     key: 0,
     class: "vuetable-th-component-sequence",
     innerHTML: e.title
-  }, null, 8, Z)) : (i(), l("td", {
+  }, null, 8, te)) : (i(), l("td", {
     key: 1,
     class: "vuetable-td-component-sequence",
     innerHTML: a.renderSequence()
-  }, null, 8, J));
+  }, null, 8, se));
 }
-const R = /* @__PURE__ */ v(Y, [["render", X]]);
-const ee = {
+const F = /* @__PURE__ */ v(ee, [["render", ae]]);
+const ie = {
   name: "vuetable-th-gutter",
   computed: {
     vuetable() {
@@ -128,25 +128,25 @@ const ee = {
     }
   }
 };
-function te(e, t, s, r, d, a) {
+function le(e, t, s, r, d, a) {
   return i(), l("th", {
-    style: m({ width: a.vuetable.scrollBarWidth }),
+    style: p({ width: a.vuetable.scrollBarWidth }),
     class: "vuetable-th-gutter"
   }, null, 4);
 }
-const H = /* @__PURE__ */ v(ee, [["render", te]]), se = {
+const O = /* @__PURE__ */ v(ie, [["render", le]]), ne = {
   components: {
-    "vuetable-field-checkbox": V,
-    "vuetable-field-handle": T,
-    "vuetable-field-sequence": R,
-    VuetableColGutter: H
+    "vuetable-field-checkbox": S,
+    "vuetable-field-handle": D,
+    "vuetable-field-sequence": F,
+    VuetableColGutter: O
   },
   computed: {
     sortOrder() {
       return this.$parent.sortOrder;
     },
     css() {
-      return this.$parent.$_css;
+      return this.$parent.customCss;
     },
     vuetable() {
       return this.$parent;
@@ -214,47 +214,53 @@ const H = /* @__PURE__ */ v(ee, [["render", te]]), se = {
       this.vuetable.orderBy(e, t);
     }
   }
-}, ae = ["innerHTML", "onClick"], ie = ["onClick", "id", "innerHTML"];
-function le(e, t, s, r, d, a) {
-  const h = $("vuetable-col-gutter");
+}, re = ["innerHTML", "onClick"], oe = ["onClick", "id", "innerHTML"];
+function ue(e, t, s, r, d, a) {
+  const h = B("vuetable-col-gutter");
   return i(), l("tr", null, [
-    (i(!0), l(b, null, p(a.vuetable.tableFields, (n, c) => (i(), l(b, null, [
+    (i(!0), l(b, null, m(a.vuetable.tableFields, (n, c) => (i(), l(b, null, [
       n.visible ? (i(), l(b, { key: 0 }, [
-        a.vuetable.isFieldComponent(n.name) ? (i(), y(C(n.name), {
+        a.vuetable.isFieldComponent(n.name) ? (i(), C(y(n.name), {
           "row-field": n,
           "is-header": !0,
           title: a.renderTitle(n),
           vuetable: a.vuetable,
           key: c,
           class: u(a.headerClass("vuetable-th-component", n)),
-          style: m({ width: n.width }),
+          style: p({ width: n.width }),
           "onVuetable:headerEvent": a.vuetable.onHeaderEvent,
           onClick: (o) => a.onColumnHeaderClicked(n, o)
         }, null, 40, ["row-field", "title", "vuetable", "class", "style", "onVuetable:headerEvent", "onClick"])) : a.vuetable.isFieldSlot(n.name) ? (i(), l("th", {
           class: u(a.headerClass("vuetable-th-slot", n)),
           key: c,
-          style: m({ width: n.width }),
+          style: p({ width: n.width }),
           innerHTML: a.renderTitle(n),
           onClick: (o) => a.onColumnHeaderClicked(n, o)
-        }, null, 14, ae)) : (i(), l("th", {
+        }, null, 14, re)) : (i(), l("th", {
           onClick: (o) => a.onColumnHeaderClicked(n, o),
           key: c,
           id: "_" + n.name,
           class: u(a.headerClass("vuetable-th", n)),
-          style: m({ width: n.width }),
+          style: p({ width: n.width }),
           innerHTML: a.renderTitle(n)
-        }, null, 14, ie))
-      ], 64)) : f("", !0)
+        }, null, 14, oe))
+      ], 64)) : g("", !0)
     ], 64))), 256)),
-    a.vuetable.scrollVisible ? (i(), y(h, { key: 0 })) : f("", !0)
+    a.vuetable.scrollVisible ? (i(), C(h, { key: 0 })) : g("", !0)
   ]);
 }
-const I = /* @__PURE__ */ v(se, [["render", le]]), ne = {
+const _ = /* @__PURE__ */ v(ne, [["render", ue]]), de = {
   name: "vuetable-col-group",
   props: {
     isHeader: {
       type: Boolean,
       default: !1
+    },
+    fieldPrefix: {
+      type: String,
+      default() {
+        return "vuetable-field-";
+      }
     }
   },
   computed: {
@@ -269,23 +275,23 @@ const I = /* @__PURE__ */ v(se, [["render", le]]), ne = {
     }
   }
 };
-function re(e, t, s, r, d, a) {
+function he(e, t, s, r, d, a) {
   return i(), l("colgroup", null, [
-    (i(!0), l(b, null, p(a.vuetable.tableFields, (h, n) => (i(), l(b, null, [
+    (i(!0), l(b, null, m(a.vuetable.tableFields, (h, n) => (i(), l(b, null, [
       h.visible ? (i(), l("col", {
         key: n,
-        style: m({ width: h.width }),
+        style: p({ width: h.width }),
         class: u(a.columnClass(h, n))
-      }, null, 6)) : f("", !0)
+      }, null, 6)) : g("", !0)
     ], 64))), 256)),
     s.isHeader && a.vuetable.scrollVisible ? (i(), l("col", {
       key: 0,
-      style: m({ width: a.vuetable.scrollBarWidth }),
+      style: p({ width: a.vuetable.scrollBarWidth }),
       class: "vuetable-col-gutter"
-    }, null, 4)) : f("", !0)
+    }, null, 4)) : g("", !0)
   ]);
 }
-const oe = /* @__PURE__ */ v(ne, [["render", re]]), _ = {
+const ce = /* @__PURE__ */ v(de, [["render", he]]), V = {
   table: {
     tableWrapper: "",
     tableHeaderClass: "fixed",
@@ -319,12 +325,33 @@ const oe = /* @__PURE__ */ v(ne, [["render", re]]), _ = {
     infoClass: "left floated left aligned six wide column"
   }
 };
-const ue = {
+const be = {
   name: "Vuetable",
   components: {
-    VuetableRowHeader: I,
-    VuetableColGroup: oe
+    VuetableRowHeader: _,
+    VuetableColGroup: ce
   },
+  emits: [
+    "vuetable:initialized",
+    "vuetable:loading",
+    "vuetable:loaded",
+    "vuetable:load-success",
+    "vuetable:load-error",
+    "vuetable:pagination-data",
+    "vuetable:scrollbar-visible",
+    "vuetable:row-clicked",
+    "vuetable:row-dblclicked",
+    "vuetable:detail-row-clicked",
+    "vuetable:cell-clicked",
+    "vuetable:cell-dblclicked",
+    "vuetable:cell-rightclicked",
+    "vuetable:row-mouseover",
+    "vuetable:field-event",
+    "vuetable:header-event",
+    "vuetable:data-reset",
+    "vuetable:checkbox-toggled",
+    "vuetable:checkbox-toggled-all"
+  ],
   props: {
     fields: {
       type: Array,
@@ -431,10 +458,6 @@ const ue = {
       type: [String, Object],
       default: ""
     },
-    comparisonRowComponent: {
-      type: [String, Object],
-      default: ""
-    },
     detailRowTransition: {
       type: String,
       default: ""
@@ -515,7 +538,7 @@ const ue = {
       lastScrollPosition: 0,
       scrollBarWidth: "17px",
       scrollVisible: !1,
-      $_css: {}
+      customCss: {}
     };
   },
   computed: {
@@ -569,7 +592,7 @@ const ue = {
       e != null && e.addEventListener("scroll", this.handleScroll);
     }
   },
-  destroyed() {
+  unmounted() {
     let e = this.$el.getElementsByClassName("vuetable-body-wrapper")[0];
     e != null && e.removeEventListener("scroll", this.handleScroll);
   },
@@ -610,7 +633,7 @@ const ue = {
       }
     },
     mergeCss() {
-      this.$_css = { ..._.table, ...this.css };
+      this.customCss = { ...V.table, ...this.css };
     },
     bodyClass(e, t) {
       return [e, t.dataClass];
@@ -674,7 +697,7 @@ const ue = {
       return e instanceof Object ? !0 : e.slice(0, this.fieldPrefix.length) === this.fieldPrefix || e.slice(0, 2) === "__";
     },
     isFieldSlot(e) {
-      return typeof this.$scopedSlots[e] < "u";
+      return typeof this.$slots[e] < "u";
     },
     titleCase(e) {
       return e.replace(/\w+/g, (t) => t.charAt(0).toUpperCase() + t.substr(1).toLowerCase());
@@ -696,10 +719,10 @@ const ue = {
       if (this.httpFetch)
         return this.httpFetch(e, t);
       if (this.httpMethod === "get")
-        return D.get(e, t);
+        return T.get(e, t);
       {
         let s = t.params;
-        return delete t.params, D.post(e, s, t);
+        return delete t.params, T.post(e, s, t);
       }
     },
     loadSuccess(e) {
@@ -958,73 +981,76 @@ You can explicitly suppress this warning by setting pagination-path="".`
       this.tableData = null, this.tablePagination = null, this.fireEvent("data-reset");
     }
   }
-}, de = {
+}, fe = {
   key: 0,
   class: "vuetable-head-wrapper"
-}, he = { key: 0 }, ce = { class: "vuetable-body" }, be = ["item-index", "onClick", "onDblclick", "onMouseover"], ge = ["innerHTML", "onClick", "onDblclick", "onContextmenu"], fe = { key: 0 }, pe = ["colspan", "innerHTML"], me = { key: 0 };
-function ve(e, t, s, r, d, a) {
-  const h = $("vuetable-col-group");
+}, ge = { key: 0 }, me = { class: "vuetable-body" }, pe = ["item-index", "onClick", "onDblclick", "onMouseover"], ve = ["innerHTML", "onClick", "onDblclick", "onContextmenu"], Ce = { key: 0 }, ye = ["colspan", "innerHTML"], Pe = { class: "blank-row" }, we = { key: 0 };
+function ke(e, t, s, r, d, a) {
+  const h = B("vuetable-col-group");
   return i(), l("div", {
-    class: u(d.$_css.tableWrapper)
+    class: u(d.customCss.tableWrapper)
   }, [
-    a.isFixedHeader ? (i(), l("div", de, [
-      g("table", {
-        class: u(["vuetable", d.$_css.tableClass, d.$_css.tableHeaderClass])
+    a.isFixedHeader ? (i(), l("div", fe, [
+      f("table", {
+        class: u(["vuetable", d.customCss.tableClass, d.customCss.tableHeaderClass])
       }, [
-        F(h, { "is-header": !0 }),
-        g("thead", null, [
+        R(h, {
+          "is-header": !0,
+          fieldPrefix: s.fieldPrefix
+        }, null, 8, ["fieldPrefix"]),
+        f("thead", null, [
           w(e.$slots, "tableHeader", { fields: d.tableFields }, () => [
-            (i(!0), l(b, null, p(s.headerRows, (n, c) => (i(), y(C(n), {
+            (i(!0), l(b, null, m(s.headerRows, (n, c) => (i(), C(y(n), {
               key: c,
               "onVuetable:headerEvent": a.onHeaderEvent
             }, null, 40, ["onVuetable:headerEvent"]))), 128))
           ])
         ])
       ], 2)
-    ])) : f("", !0),
-    g("div", {
+    ])) : g("", !0),
+    f("div", {
       class: u(["vuetable-body-wrapper", { "fixed-header": a.isFixedHeader }]),
-      style: m({ height: s.tableHeight })
+      style: p({ height: s.tableHeight })
     }, [
-      g("table", {
-        class: u(["vuetable", a.isFixedHeader ? "fixed-header" : "", d.$_css.tableClass, d.$_css.tableBodyClass])
+      f("table", {
+        class: u(["vuetable", a.isFixedHeader ? "fixed-header" : "", d.customCss.tableClass, d.customCss.tableBodyClass])
       }, [
-        F(h),
-        a.isFixedHeader ? f("", !0) : (i(), l("thead", he, [
+        R(h, { fieldPrefix: s.fieldPrefix }, null, 8, ["fieldPrefix"]),
+        a.isFixedHeader ? g("", !0) : (i(), l("thead", ge, [
           w(e.$slots, "tableHeader", { fields: d.tableFields }, () => [
-            (i(!0), l(b, null, p(s.headerRows, (n, c) => (i(), y(C(n), {
+            (i(!0), l(b, null, m(s.headerRows, (n, c) => (i(), C(y(n), {
               key: c,
               "onVuetable:headerEvent": a.onHeaderEvent
             }, null, 40, ["onVuetable:headerEvent"]))), 128))
           ])
         ])),
-        g("tfoot", null, [
+        f("tfoot", null, [
           w(e.$slots, "tableFooter", { fields: d.tableFields })
         ]),
-        g("tbody", ce, [
-          (i(!0), l(b, null, p(d.tableData, (n, c) => (i(), l(b, { key: c }, [
-            g("tr", {
+        f("tbody", me, [
+          (i(!0), l(b, null, m(d.tableData, (n, c) => (i(), l(b, { key: c }, [
+            f("tr", {
               "item-index": c,
               class: u(a.onRowClass(n, c)),
               onClick: (o) => a.onRowClicked(n, c, o),
               onDblclick: (o) => a.onRowDoubleClicked(n, c, o),
               onMouseover: (o) => a.onMouseOver(n, c, o)
             }, [
-              (i(!0), l(b, null, p(d.tableFields, (o, j) => (i(), l(b, { key: j }, [
+              (i(!0), l(b, null, m(d.tableFields, (o, A) => (i(), l(b, { key: A }, [
                 o.visible ? (i(), l(b, { key: 0 }, [
-                  a.isFieldComponent(o.name) ? (i(), y(C(o.name), {
-                    key: 0,
+                  a.isFieldComponent(o.name) ? (i(), C(y(o.name), {
                     "row-data": n,
                     "row-index": c,
                     "row-field": o,
                     vuetable: a.vuetable,
                     class: u(a.bodyClass("vuetable-component", o)),
-                    style: m({ width: o.width }),
+                    style: p({ width: o.width }),
+                    key: n[s.trackBy],
                     "onVuetable:fieldEvent": a.onFieldEvent
                   }, null, 40, ["row-data", "row-index", "row-field", "vuetable", "class", "style", "onVuetable:fieldEvent"])) : a.isFieldSlot(o.name) ? (i(), l("td", {
                     key: 1,
                     class: u(a.bodyClass("vuetable-slot", o)),
-                    style: m({ width: o.width })
+                    style: p({ width: o.width })
                   }, [
                     w(e.$slots, o.name, {
                       rowData: n,
@@ -1034,51 +1060,51 @@ function ve(e, t, s, r, d, a) {
                   ], 6)) : (i(), l("td", {
                     key: 2,
                     class: u(a.bodyClass("vuetable-td-" + o.name, o)),
-                    style: m({ width: o.width }),
+                    style: p({ width: o.width }),
                     innerHTML: a.renderNormalField(o, n),
                     onClick: (P) => a.onCellClicked(n, c, o, P),
                     onDblclick: (P) => a.onCellDoubleClicked(n, c, o, P),
                     onContextmenu: (P) => a.onCellRightClicked(n, c, o, P)
-                  }, null, 46, ge))
-                ], 64)) : f("", !0)
+                  }, null, 46, ve))
+                ], 64)) : g("", !0)
               ], 64))), 128))
-            ], 42, be),
+            ], 42, pe),
             a.useDetailRow ? (i(), l(b, { key: 0 }, [
               a.isVisibleDetailRow(n[s.trackBy]) ? (i(), l(b, { key: 0 }, [
-                (i(), y(C(s.detailRowComponent), {
+                (i(), C(y(s.detailRowComponent), {
                   "row-data": n,
                   "row-index": c,
                   options: s.detailRowOptions
                 }, null, 8, ["row-data", "row-index", "options"])),
-                (i(), y(C(s.comparisonRowComponent), {
+                (i(), C(y(e.comparisonRowComponent), {
                   "row-data": n,
                   "row-index": c,
                   options: s.detailRowOptions
                 }, null, 8, ["row-data", "row-index", "options"]))
-              ], 64)) : f("", !0)
-            ], 64)) : f("", !0)
+              ], 64)) : g("", !0)
+            ], 64)) : g("", !0)
           ], 64))), 128)),
-          a.displayEmptyDataRow ? (i(), l("tr", fe, [
-            g("td", {
+          a.displayEmptyDataRow ? (i(), l("tr", Ce, [
+            f("td", {
               colspan: a.countVisibleFields,
               class: "vuetable-empty-result",
               innerHTML: s.noDataTemplate
-            }, null, 8, pe)
-          ])) : f("", !0),
-          a.lessThanMinRows ? (i(!0), l(b, { key: 1 }, p(a.blankRows, (n) => (i(), l("tr", {
-            key: n,
-            class: "blank-row"
-          }, [
-            (i(!0), l(b, null, p(d.tableFields, (c, o) => (i(), l(b, { key: o }, [
-              c.visible ? (i(), l("td", me, "\xA0")) : f("", !0)
-            ], 64))), 128))
-          ]))), 128)) : f("", !0)
+            }, null, 8, ye)
+          ])) : g("", !0),
+          a.lessThanMinRows ? (i(!0), l(b, { key: 1 }, m(a.blankRows, (n) => (i(), l("tr", Pe, [
+            (i(!0), l(b, null, m(d.tableFields, (c, o) => (i(), l(b, null, [
+              c.visible ? (i(), l("td", we, "\xA0")) : g("", !0)
+            ], 64))), 256))
+          ]))), 256)) : g("", !0)
         ])
       ], 2)
     ], 6)
   ], 2);
 }
-const ye = /* @__PURE__ */ v(ue, [["render", ve]]), S = {
+const I = /* @__PURE__ */ v(be, [["render", ke]]), E = {
+  emits: [
+    "vuetable-pagination:change-page"
+  ],
   props: {
     css: {
       type: Object,
@@ -1101,7 +1127,7 @@ const ye = /* @__PURE__ */ v(ue, [["render", ve]]), S = {
     return {
       eventPrefix: "vuetable-pagination:",
       tablePagination: null,
-      $_css: {}
+      customCss: {}
     };
   },
   computed: {
@@ -1132,7 +1158,7 @@ const ye = /* @__PURE__ */ v(ue, [["render", ve]]), S = {
   },
   methods: {
     mergeCss() {
-      this.$_css = { ..._.pagination, ...this.css };
+      this.customCss = { ...V.pagination, ...this.css };
     },
     loadPage(e) {
       this.$emit(this.eventPrefix + "change-page", e);
@@ -1147,7 +1173,7 @@ const ye = /* @__PURE__ */ v(ue, [["render", ve]]), S = {
       this.tablePagination = null;
     }
   }
-}, M = {
+}, x = {
   props: {
     css: {
       type: Object,
@@ -1171,7 +1197,7 @@ const ye = /* @__PURE__ */ v(ue, [["render", ve]]), S = {
   data: function() {
     return {
       tablePagination: null,
-      $_css: {}
+      customCss: {}
     };
   },
   computed: {
@@ -1184,7 +1210,7 @@ const ye = /* @__PURE__ */ v(ue, [["render", ve]]), S = {
   },
   methods: {
     mergeCss() {
-      this.$_css = { ..._.paginationInfo, ...this.css };
+      this.customCss = { ...V.paginationInfo, ...this.css };
     },
     setPaginationData(e) {
       this.tablePagination = e;
@@ -1194,66 +1220,66 @@ const ye = /* @__PURE__ */ v(ue, [["render", ve]]), S = {
     }
   }
 };
-const Ce = {
-  mixins: [S]
-}, Pe = { key: 1 }, we = { key: 1 }, ke = ["onClick", "innerHTML"], _e = ["onClick", "innerHTML"], Se = { key: 1 }, De = { key: 1 };
-function Fe(e, t, s, r, d, a) {
-  return L((i(), l("div", {
-    class: u(e.$_css.wrapperClass)
+const Se = {
+  mixins: [E]
+}, De = { key: 1 }, Fe = { key: 1 }, Oe = ["onClick", "innerHTML"], _e = ["onClick", "innerHTML"], Ve = { key: 1 }, Ee = { key: 1 };
+function Te(e, t, s, r, d, a) {
+  return N((i(), l("div", {
+    class: u(e.customCss.wrapperClass)
   }, [
-    g("a", {
+    f("a", {
       onClick: t[0] || (t[0] = (h) => e.loadPage(e.firstPage)),
-      class: u(["btn-nav", e.$_css.linkClass, e.isOnFirstPage ? e.$_css.disabledClass : ""])
+      class: u(["btn-nav", e.customCss.linkClass, e.isOnFirstPage ? e.customCss.disabledClass : ""])
     }, [
-      e.$_css.icons.first != "" ? (i(), l("i", {
+      e.customCss.icons.first != "" ? (i(), l("i", {
         key: 0,
-        class: u([e.$_css.icons.first])
-      }, null, 2)) : (i(), l("span", Pe, "\xAB"))
+        class: u([e.customCss.icons.first])
+      }, null, 2)) : (i(), l("span", De, "\xAB"))
     ], 2),
-    g("a", {
+    f("a", {
       onClick: t[1] || (t[1] = (h) => e.loadPage("prev")),
-      class: u(["btn-nav", e.$_css.linkClass, e.isOnFirstPage ? e.$_css.disabledClass : ""])
+      class: u(["btn-nav", e.customCss.linkClass, e.isOnFirstPage ? e.customCss.disabledClass : ""])
     }, [
-      e.$_css.icons.next != "" ? (i(), l("i", {
+      e.customCss.icons.next != "" ? (i(), l("i", {
         key: 0,
-        class: u([e.$_css.icons.prev])
-      }, null, 2)) : (i(), l("span", we, "\xA0\u2039"))
+        class: u([e.customCss.icons.prev])
+      }, null, 2)) : (i(), l("span", Fe, "\xA0\u2039"))
     ], 2),
-    e.notEnoughPages ? (i(!0), l(b, { key: 0 }, p(e.totalPage, (h, n) => (i(), l("a", {
+    e.notEnoughPages ? (i(!0), l(b, { key: 0 }, m(e.totalPage, (h, n) => (i(), l("a", {
       key: n,
       onClick: (c) => e.loadPage(n + e.firstPage),
-      class: u([e.$_css.pageClass, e.isCurrentPage(n + e.firstPage) ? e.$_css.activeClass : ""]),
+      class: u([e.customCss.pageClass, e.isCurrentPage(n + e.firstPage) ? e.customCss.activeClass : ""]),
       innerHTML: h
-    }, null, 10, ke))), 128)) : (i(!0), l(b, { key: 1 }, p(e.windowSize, (h, n) => (i(), l("a", {
+    }, null, 10, Oe))), 128)) : (i(!0), l(b, { key: 1 }, m(e.windowSize, (h, n) => (i(), l("a", {
       key: n,
       onClick: (c) => e.loadPage(e.windowStart + n + e.firstPage - 1),
-      class: u([e.$_css.pageClass, e.isCurrentPage(e.windowStart + n + e.firstPage - 1) ? e.$_css.activeClass : ""]),
+      class: u([e.customCss.pageClass, e.isCurrentPage(e.windowStart + n + e.firstPage - 1) ? e.customCss.activeClass : ""]),
       innerHTML: e.windowStart + h - 1
     }, null, 10, _e))), 128)),
-    g("a", {
+    f("a", {
       onClick: t[2] || (t[2] = (h) => e.loadPage("next")),
-      class: u(["btn-nav", e.$_css.linkClass, e.isOnLastPage ? e.$_css.disabledClass : ""])
+      class: u(["btn-nav", e.customCss.linkClass, e.isOnLastPage ? e.customCss.disabledClass : ""])
     }, [
-      e.$_css.icons.next != "" ? (i(), l("i", {
+      e.customCss.icons.next != "" ? (i(), l("i", {
         key: 0,
-        class: u([e.$_css.icons.next])
-      }, null, 2)) : (i(), l("span", Se, "\u203A\xA0"))
+        class: u([e.customCss.icons.next])
+      }, null, 2)) : (i(), l("span", Ve, "\u203A\xA0"))
     ], 2),
-    g("a", {
+    f("a", {
       onClick: t[3] || (t[3] = (h) => e.loadPage(e.lastPage)),
-      class: u(["btn-nav", e.$_css.linkClass, e.isOnLastPage ? e.$_css.disabledClass : ""])
+      class: u(["btn-nav", e.customCss.linkClass, e.isOnLastPage ? e.customCss.disabledClass : ""])
     }, [
-      e.$_css.icons.last != "" ? (i(), l("i", {
+      e.customCss.icons.last != "" ? (i(), l("i", {
         key: 0,
-        class: u([e.$_css.icons.last])
-      }, null, 2)) : (i(), l("span", De, "\xBB"))
+        class: u([e.customCss.icons.last])
+      }, null, 2)) : (i(), l("span", Ee, "\xBB"))
     ], 2)
   ], 2)), [
-    [B, e.tablePagination && e.lastPage > e.firstPage]
+    [q, e.tablePagination && e.lastPage > e.firstPage]
   ]);
 }
-const Oe = /* @__PURE__ */ v(Ce, [["render", Fe]]), $e = {
-  mixins: [S],
+const M = /* @__PURE__ */ v(Se, [["render", Te]]), Re = {
+  mixins: [E],
   props: {
     pageText: {
       type: String,
@@ -1261,70 +1287,69 @@ const Oe = /* @__PURE__ */ v(Ce, [["render", Fe]]), $e = {
         return "Page";
       }
     }
-  },
-  methods: {
-    registerEvents() {
-      this.$on("vuetable:pagination-data", (e) => {
-        this.setPaginationData(e);
-      });
-    }
-  },
-  created() {
-    this.registerEvents();
   }
-}, Ee = ["value", "selected"];
-function Ve(e, t, s, r, d, a) {
+}, He = ["value", "selected"];
+function Ie(e, t, s, r, d, a) {
   return i(), l("div", {
-    class: u([e.$_css.wrapperClass])
+    class: u([e.customCss.wrapperClass])
   }, [
-    g("a", {
+    f("a", {
       onClick: t[0] || (t[0] = (h) => e.loadPage("prev")),
-      class: u([e.$_css.linkClass, { [e.$_css.disabledClass]: e.isOnFirstPage }])
+      class: u([e.customCss.linkClass, { [e.customCss.disabledClass]: e.isOnFirstPage }])
     }, [
-      g("i", {
-        class: u(e.$_css.icons.prev)
+      f("i", {
+        class: u(e.customCss.icons.prev)
       }, null, 2)
     ], 2),
-    g("select", {
-      class: u(["vuetable-pagination-dropdown", e.$_css.dropdownClass]),
+    f("select", {
+      class: u(["vuetable-pagination-dropdown", e.customCss.dropdownClass]),
       onChange: t[1] || (t[1] = (h) => e.loadPage(h.target.selectedIndex + e.firstPage))
     }, [
-      (i(!0), l(b, null, p(e.totalPage, (h, n) => (i(), l("option", {
+      (i(!0), l(b, null, m(e.totalPage, (h, n) => (i(), l("option", {
         key: h,
-        class: u([e.$_css.pageClass]),
+        class: u([e.customCss.pageClass]),
         value: n + e.firstPage,
         selected: e.isCurrentPage(n + e.firstPage)
-      }, O(s.pageText) + " " + O(h), 11, Ee))), 128))
+      }, H(s.pageText) + " " + H(h), 11, He))), 128))
     ], 34),
-    g("a", {
+    f("a", {
       onClick: t[2] || (t[2] = (h) => e.loadPage("next")),
-      class: u([e.$_css.linkClass, { [e.$_css.disabledClass]: e.isOnLastPage }])
+      class: u([e.customCss.linkClass, { [e.customCss.disabledClass]: e.isOnLastPage }])
     }, [
-      g("i", {
-        class: u(e.$_css.icons.next)
+      f("i", {
+        class: u(e.customCss.icons.next)
       }, null, 2)
     ], 2)
   ], 2);
 }
-const Te = /* @__PURE__ */ v($e, [["render", Ve]]);
-const Re = {
-  mixins: [M]
-}, He = ["innerHTML"];
-function Ie(e, t, s, r, d, a) {
+const $ = /* @__PURE__ */ v(Re, [["render", Ie]]);
+const Me = {
+  mixins: [x]
+}, $e = ["innerHTML"];
+function je(e, t, s, r, d, a) {
   return i(), l("div", {
-    class: u(["vuetable-pagination-info", e.$_css.infoClass]),
+    class: u(["vuetable-pagination-info", e.customCss.infoClass]),
     innerHTML: e.paginationInfo
-  }, null, 10, He);
+  }, null, 10, $e);
 }
-const Me = /* @__PURE__ */ v(Re, [["render", Ie]]), Be = {
+const j = /* @__PURE__ */ v(Me, [["render", je]]), xe = {
+  Vuetable: I,
+  VuetablePagination: M,
+  VuetablePaginationDropDown: $,
+  VuetablePaginationInfo: j,
+  VuetableFieldCheckbox: S,
+  VuetableFieldHandle: D,
+  VuetableFieldSequence: F,
+  VuetableRowHeader: _,
+  VuetableColGutter: O,
   VuetableFieldMixin: k,
-  VuetableFieldCheckboxMixin: E,
-  VuetablePaginationMixin: S,
-  VuetablePaginationInfoMixin: M,
+  VuetableFieldCheckboxMixin: L,
+  VuetablePaginationMixin: E,
+  VuetablePaginationInfoMixin: x,
   install(e, t) {
-    e.component("Vuetable", ye), e.component("VuetablePagination", Oe), e.component("VuetablePaginationDropDown", Te), e.component("VuetablePaginationInfo", Me), e.component("VuetableFieldCheckbox", V), e.component("VuetableFieldHandle", T), e.component("VuetableRowHeader", I), e.component("VuetableColGutter", H), e.component("VuetableFieldSequence", R);
+    e.component("Vuetable", I), e.component("VuetablePagination", M), e.component("VuetablePaginationDropDown", $), e.component("VuetablePaginationInfo", j), e.component("VuetableFieldCheckbox", S), e.component("VuetableFieldHandle", D), e.component("VuetableRowHeader", _), e.component("VuetableColGutter", O), e.component("VuetableFieldSequence", F);
   }
 };
 export {
-  Be as default
+  xe as default
 };
